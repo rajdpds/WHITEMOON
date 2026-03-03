@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BDS GYM</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+<style>
+
+body{
+    margin:0;
+    font-family:'Oswald',sans-serif;
+    background:#000;
+    color:#ff0000;
+}
+
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+}
+
+.logo{
+    font-size:36px;
+    font-weight:700;
+}
+
+.join-btn{
+    background:transparent;
+    border:2px solid #ff0000;
+    color:#ff0000;
+    padding:10px 25px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.join-btn:hover{
+    background:#ff0000;
+    color:#000;
+}
+
+/* HERO */
+.hero{
+    width:100%;
+    max-height:500px;
+    overflow:hidden;
+}
+
+.hero img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+}
+
+/* GRID 2x5 */
+.equipment-section{
+    width:95%;
+    max-width:1400px;
+    margin:60px auto;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:40px;
+}
+
+.equipment-card{
+    background:#111;
+    border:1px solid #ff0000;
+    border-radius:25px;
+    padding:0;
+    text-align:center;
+    cursor:pointer;
+    overflow:hidden;
+}
+
+.equipment-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    display:block;
+}
+
+.equipment-card p{
+    margin-top:15px;
+    font-size:20px;
+    font-weight:600;
+}
+
+/* IMPORTANT FIX — SAME WIDTH AS 2 GRID COLUMNS */
+.full-width-2{
+    grid-column: span 2;
+}
+
+/* CARD STYLE */
+.card{
+    padding:40px;
+    background:#111;
+    border-radius:25px;
+    border:1px solid #ff0000;
+    text-align:center;
+    font-size:22px;
+    margin-top:20px;
+}
+
+/* LOCATION */
+.location a{
+    color:#ff0000;
+    text-decoration:none;
+}
+
+/* NEW OVERLAY */
+.overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.overlay-content{
+    width:85%;
+    max-width:900px;
+    background:#111;
+    border:1px solid #ff0000;
+    border-radius:25px;
+    padding:40px;
+    max-height:85vh;
+    overflow-y:auto;
+    position:relative;
+}
+
+.overlay-close{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:24px;
+    cursor:pointer;
+}
+
+.exercise-block{
+    margin-bottom:35px;
+}
+
+.exercise-img{
+    width:100%;
+    height:200px;
+    border:1px solid #ff0000;
+    border-radius:15px;
+    overflow:hidden;
+    margin-top:10px;
+}
+
+.exercise-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+@media(max-width:1000px){
+    .equipment-section{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+/* WHATSAPP FLOAT BUTTON */
+.whatsapp-float{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    background:#25D366;
+    color:white;
+    font-size:28px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 0 15px rgba(0,0,0,0.5);
+    z-index:9999;
+}
+
+.whatsapp-float:hover{
+    transform:scale(1.1);
+}
+    
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">BDS GYM</div>
+    <button class="join-btn" onclick="payNow()">JOIN</button>
+</header>
+
+<div class="hero">
+    <img src="20260303_095522.jpg">
+</div>
+    
+<div style="text-align:center; font-size:38px; margin:40px 0; letter-spacing:3px;">
+    EQUIPMENT AVAILABLE
+</div>
+
+<div class="equipment-section">
+
+    <!-- SAME EQUIPMENT CARDS (UNCHANGED) -->
+
+    <div class="equipment-card" onclick="openOverlay('Stationary Bike')">
+        <img src="1000113225.jpg">
+        <p>Stationary Bike</p>
+    </div>
+
+    <div class="equipment-card" onclick="openOverlay('Kettlebell')">
+        <img src="1000113226.jpg">
+        <p>Kettlebell</p>
+    </div>
+
+    <div class="equipment-card" onclick="openOverlay('Barbell')">
+        <img src="1000113343.jpg">
+        <p>Barbell</p>
+    </div>
+
+    <div class="equipment-card" onclick="openOverlay('Lat Pulldown')">
+        <img src="1000113228.jpg">
+        <p>Lat Pulldown</p>
+    </div>
+
+    <div class="equipment-card" onclick="openOverlay('Bench Press')">
+        <img src="1000113229.jpg">
+        <p>Bench Press</p>
+    </div>
+
+    <div class="equipment-card" onclick="openOverlay('Squat Rack')">
+        <img src="1000113355.jpg">
+        <p>Squat Rack</p>
+    </div>
+
+    <div class="equipment-card" onclick="openOverlay('Dumbbells')">
+        <img src="1000113232.jpg">
+        <p>Dumbbells</p>
+    </div>
+
+    <div class="equipment-card" onclick="openOverlay('Treadmill')">
+        <img src="1000113233.jpg">
+        <p>Treadmill</p>
+    </div>
+
+    <div class="equipment-card" onclick="openOverlay('Cable Machine')">
+        <img src="1000113234.jpg">
+        <p>Cable Machine</p>
+    </div>
+
+    <div class="equipment-card" onclick="openOverlay('Smith Machine')">
+        <img src="1000113235.jpg">
+        <p>Smith Machine</p>
+    </div>
+
+    <div class="full-width-2">
+        <div class="card">
+            About Plans<br><br>
+            Joining – 1500/-<br>
+            Monthly – 500/-
+        </div>
+    </div>
+
+    <div class="full-width-2">
+        <div class="card location">
+            📍 <a href="https://maps.app.goo.gl/AsagDupfQSvw7a4j6?g_st=aw" target="_blank">
+            View Gym Location on Google Maps
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay">
+    <div class="overlay-content">
+        <div class="overlay-close" onclick="closeOverlay()">❌</div>
+        <h2 id="overlayTitle" style="text-align:center; margin-bottom:30px;"></h2>
+        <div id="overlayExercises"></div>
+    </div>
+</div>
+
+<script>
+
+const exerciseData = {
+    "Stationary Bike":["Cardio Burn","HIIT Ride","Endurance Cycling"],
+    "Kettlebell":["Kettlebell Swings","Goblet Squats","Turkish Get-Up"],
+    "Barbell":["Deadlift","Bench Press","Overhead Press"],
+    "Lat Pulldown":["Wide Grip Pulldown","Close Grip Pulldown","Reverse Grip Pulldown"],
+    "Bench Press":["Flat Bench Press","Incline Press","Close Grip Press"],
+    "Squat Rack":["Back Squat","Front Squat","Lunges"],
+    "Dumbbells":["Bicep Curl","Shoulder Press","Dumbbell Fly"],
+    "Treadmill":["Sprint Intervals","Incline Walk","Fat Burn Run"],
+    "Cable Machine":["Cable Fly","Tricep Pushdown","Cable Row"],
+    "Smith Machine":["Smith Squat","Smith Bench Press","Calf Raises"]
+};
+
+function formatName(name){
+    return name.toLowerCase().replace(/\s+/g,'-');
+}
+
+function openOverlay(machine){
+    document.getElementById("overlay").style.display="flex";
+    document.getElementById("overlayTitle").innerText=machine;
+
+    let container=document.getElementById("overlayExercises");
+    container.innerHTML="";
+
+    exerciseData[machine].forEach(ex=>{
+        let imagePath = "exercise-images/" + formatName(ex) + ".jpg";
+
+        container.innerHTML+=`
+        <div class="exercise-block">
+            <h3>${ex}</h3>
+            <div class="exercise-img">
+                <img src="${imagePath}" alt="${ex}">
+            </div>
+        </div>
+        `;
+    });
+}
+
+function closeOverlay(){
+    document.getElementById("overlay").style.display="none";
+}
+
+function payNow(){
+    window.location.href="upi://pay?pa=8638136604@ibl&pn=SPARTANGYM&cu=INR";
+}
+
+</script>
+
+<a href="https://wa.me/918638136604" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
+    
+</body>
+</html>
