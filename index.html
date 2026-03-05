@@ -38,7 +38,27 @@ header{
     border-radius:30px;
     cursor:pointer;
 }
+/* JOIN BUTTON ANIMATION */
+.join-btn{
+    background:transparent;
+    border:2px solid #ff0000;
+    color:#ff0000;
+    padding:10px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    position:relative;
+    animation:joinMove 1.5s infinite alternate ease-in-out;
+}
 
+@keyframes joinMove{
+    0%{
+        transform:translateX(-15px);
+    }
+    100%{
+        transform:translateX(15px);
+    }
+}
+    
 .join-btn:hover{
     background:#ff0000;
     color:#000;
